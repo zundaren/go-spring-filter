@@ -1,6 +1,4 @@
-# go-spring-filter
-
-## 1.cors
+1.cors
 
 ```
 server := SpringGin.New(cfg)
