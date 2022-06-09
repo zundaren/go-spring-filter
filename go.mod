@@ -1,4 +1,4 @@
-module github.com/zundaren/go-spring-filter/cors
+module github.com/zundaren/go-spring-filter
 
 go 1.18
 
