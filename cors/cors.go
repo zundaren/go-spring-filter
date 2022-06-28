@@ -1,12 +1,13 @@
 package cors
 
 import (
-	"github.com/go-spring/spring-core/web"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/go-spring/spring-core/web"
 )
 
 // reference https://github.com/rs/cors/blob/master/cors.go
@@ -48,7 +49,7 @@ type Cors struct {
 	optionPassthrough      bool
 }
 
-// cors must be handled before routing
+// PreFilter cors must be handled before routing
 func PreFilter(options Options) *web.Prefilter {
 	return web.NewPrefilter(filter(options))
 }

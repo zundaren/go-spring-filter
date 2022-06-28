@@ -2,9 +2,10 @@ package secure
 
 import (
 	"fmt"
-	"github.com/go-spring/spring-core/web"
 	"net/http"
 	"strings"
+
+	"github.com/go-spring/spring-core/web"
 )
 
 // reference https://github.com/gin-gonic/contrib/tree/master/secure
@@ -105,7 +106,7 @@ func (s *secure) process(w http.ResponseWriter, r *http.Request) error {
 		}
 	}
 
-	if s.opt.SSLRedirect && s.opt.IsDevelopment == false {
+	if s.opt.SSLRedirect && !s.opt.IsDevelopment {
 		isSSL := false
 		if strings.EqualFold(r.URL.Scheme, "https") || r.TLS != nil {
 			isSSL = true
@@ -118,7 +119,7 @@ func (s *secure) process(w http.ResponseWriter, r *http.Request) error {
 			}
 		}
 
-		if isSSL == false {
+		if !isSSL {
 			url := r.URL
 			url.Scheme = "https"
 			url.Host = r.Host
@@ -133,7 +134,7 @@ func (s *secure) process(w http.ResponseWriter, r *http.Request) error {
 			}
 
 			http.Redirect(w, r, url.String(), status)
-			return fmt.Errorf("Redirecting to HTTPS")
+			return fmt.Errorf("redirecting to HTTPS")
 		}
 	}
 
