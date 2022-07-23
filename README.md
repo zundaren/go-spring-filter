@@ -1,4 +1,4 @@
-# go-spring v1.1.0-rc4 filter
+# go-spring v1.1.0 filter
 
 依赖 go get github.com/zundaren/go-spring-filter
 ```
